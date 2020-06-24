@@ -18,7 +18,23 @@ SHELL ["/irissession.sh"]
 
 RUN \
   do $SYSTEM.OBJ.Load("Installer.cls", "ck") \
-  set sc = ##class(App.Installer).setup() 
+  set sc = ##class(App.Installer).setup() \
+  zn "IRISAPP" \
+  zpm "install restforms2" \
+  zpm "install restforms2-ui" \
+  do $System.OBJ.LoadDir("/opt/irisapp/src","ck",,1) \
+  do ##class(Form.Util.Init).populateTestForms() \
+  zn "%SYS" \
+  write "Modify forms application security...",! \
+  set webName = "/forms" \
+  set webProperties("AutheEnabled") = 32 \
+  set webProperties("MatchRoles")=":%DB_%DEFAULT" \
+  set sc = ##class(Security.Applications).Modify(webName, .webProperties) \
+  # if sc<1 write $SYSTEM.OBJ.DisplayError(sc) \
+  write "Add Role for CSPSystem User...",! \
+  set sc=##class(Security.Users).AddRoles("CSPSystem","%DB_%DEFAULT") 
+  
+  
 
 # bringing the standard shell back
 SHELL ["/bin/bash", "-c"]
