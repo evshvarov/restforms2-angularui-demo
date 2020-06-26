@@ -1,4 +1,4 @@
-## intersystems-objectscript-template
+## intersystems-angular-test
 This is a template for InterSystems ObjectScript Github repository.
 The template goes also with a few files which let you immedietly compile your ObjecScript files in InterSystems IRIS Community Edition in a docker container
 
