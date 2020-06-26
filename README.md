@@ -1,7 +1,6 @@
-## intersystems-angular-test
-This is a template for InterSystems ObjectScript Github repository.
-The template goes also with a few files which let you immedietly compile your ObjecScript files in InterSystems IRIS Community Edition in a docker container
 
+## intersystems-angular-demo
+A simple example how to generate REST API and Angular UI for an arbitrary InterSystems IRIS persisitent class
 ## Prerequisites
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
 
@@ -10,7 +9,7 @@ Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installi
 Clone/git pull the repo into any local directory
 
 ```
-$ git clone https://github.com/intersystems-community/objectscript-docker-template.git
+$ git clone https://github.com/evshvarov/restforms2-angularui-demo.git
 ```
 
 Open the terminal in this directory and run:
@@ -27,13 +26,8 @@ $ docker-compose up -d
 
 ## How to Test it
 
-Open IRIS terminal:
+Open in the URL in browser: localhost:port/restforms2-ui/index.html
 
-```
-$ docker-compose exec iris iris session iris
-USER>zn "IRISAPP"
-IRISAPP>write ##class(PackageSample.ObjectScript).Test()
-```
 ## How to start coding
 This repository is ready to code in VSCode with ObjectScript plugin.
 Install [VSCode](https://code.visualstudio.com/), [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) and [ObjectScript](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript) plugin and open the folder in VSCode.
