@@ -27,6 +27,7 @@ $ docker-compose up -d
 ## How to Test it
 
 Open in the URL in browser: localhost:port/restforms2-ui/index.html
+Login with _SYSTEM user
 
 ## How to start coding
 This repository is ready to code in VSCode with ObjectScript plugin.
