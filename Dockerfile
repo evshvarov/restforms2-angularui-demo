@@ -1,9 +1,15 @@
 ARG IMAGE=store/intersystems/iris-community:2020.1.0.204.0
 ARG IMAGE=intersystemsdc/iris-community:2020.1.0.209.0-zpm
 ARG IMAGE=intersystemsdc/iris-community:2020.2.0.204.0-zpm
+ARG IMAGE=intersystemsdc/iris-community
 FROM $IMAGE
 
 USER root
+
+## workaround for sick restforms2 !!!
+WORKDIR /opt/csp/irisapp
+RUN chown ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_IRISGROUP} /opt/csp/irisapp
+##
 
 WORKDIR /opt/irisapp
 RUN chown ${ISC_PACKAGE_MGRUSER}:${ISC_PACKAGE_IRISGROUP} /opt/irisapp
@@ -33,8 +39,6 @@ RUN \
   # if sc<1 write $SYSTEM.OBJ.DisplayError(sc) \
   write "Add Role for CSPSystem User...",! \
   set sc=##class(Security.Users).AddRoles("CSPSystem","%DB_%DEFAULT") 
-  
-  
 
 # bringing the standard shell back
 SHELL ["/bin/bash", "-c"]
